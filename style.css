@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+  font-size: 20px;
+}
+
+header {
+  position: relative;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100% - 90px);
+}
+
+footer {
+  margin: auto 0 0 0;
+  width: 1050px;
+}
+
+.title {
+  position: relative;
+  width: 1050px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cap {
+  display: flex;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.logo {
+  margin-top: 12px;
+}
+
+.cart-icon {
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
+
+.main-footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 1050px;
+  margin-top: 45px;
+  align-items: center;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.number {
+  display: inline-block;
+  margin-left: 17px;
+}
+
+.button {
+  margin: 0 10px 0 36px;
+  background: black;
+  border-radius: 8px;
+  color: white;
+  width: 288px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.hpp {
+  margin-top: 5px;
+}
+
+.pay-title {
+  margin-top: 86px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.store {
+  margin-top: 36px;
+}
+
+.success-image {
+  width: 150px;
+  margin-top: 130px;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success-msg {
+  margin-top: 26px;
+  font-weight: bold;
+}
+
+.success-btn {
+  margin: 20px 0 0;
+  width: 186px;
+}

@@ -28,7 +28,7 @@
   <script>
     const script = document.createElement('script');
 
-    script.src = "https://cdn.aws.billingplatform.com/hosted-payments-ui@1.0.15/lib.js";
+    script.src = `https://cdn.aws.billingplatform.com/hosted-payments-ui@${location.search.split('=')[1] || 1}/lib.js`;
     document.body.append(script);
 
     script.onload = function () {

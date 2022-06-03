@@ -28,7 +28,7 @@
   <script>
     const script = document.createElement('script');
 
-    script.src = "https://cdn.aws.billingplatform.com/hosted-payments-ui@1.0.8/lib.js";
+    script.src = "https://cdn.aws.billingplatform.com/hosted-payments-ui@1/lib.js";
     document.body.append(script);
 
     script.onload = function () {
@@ -37,10 +37,9 @@
           targetSelector: '.hpp',
           amount: 44.98,
           maxAmount: 10000,
-          environmentId: 123,
-          billingProfileId: 123,
-          paymentGatewayProfileId: 123,
-          allowEditPrice: false,
+          environmentId: '5513dc99-338b-4b4f-bda6-76c388b4b491',
+          billingProfileId: 'e0751c2b-3386-7360-e053-7b01000a001f',
+          allowEditPrice: true,
           maxContainerWidth: '630px',
           containerWidth: '630px',
           customCssVariables: {

@@ -1,0 +1,104 @@
+.tiles {
+  margin-top: 60px;
+  width: 100%;
+  max-width: 900px;
+  height: 600px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tile {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 29px rgb(0 0 0 / 10%);
+  padding: 40px 40px 64px;
+  width: 100%;
+  margin: 0 15px;
+  text-align: center;
+  font-family: 'Albert Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+.tile.main {
+  background: #e1f8e0;
+}
+
+.styles_plan-price-wrapper__JyYqX {
+  text-align: center;
+}
+
+.price {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.styles_font-weight-xbold__EAK63 {
+  font-size: 31px;
+  margin-right: 5px;
+}
+
+.styles_pricing-notes__Wfndn {
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+  font-size: 13px;
+}
+
+.styles_h2__uRcEQ {
+  margin-bottom: 0;
+}
+
+.buy-button {
+  display: block;
+  text-decoration: none;
+  border: 2px solid #00756a;
+  background: #00756a;
+  color: #fff;
+  margin: 15px 30px 0;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.buy-button.free {
+  border: 2px solid #00756a;
+  background: #fff;
+  color: #00756a;
+}
+
+.styles_margin-t-xs__734o6 {
+  border-top: 1px solid #cbcbcb;
+  border-bottom: 1px solid #cbcbcb;
+  padding: 16px 0;
+  margin-top: 30px;
+  font-size: 17px;
+  height: 60px;
+}
+
+.feat-sect {
+  margin-top: 32px;
+  text-align: left;
+}
+
+.feat-title {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.feat-list {
+  font-size: 13px;
+  padding: 0 0 0 11px;
+}
+
+.feat-list li {
+  margin-bottom: 7px;
+}
+
+.feat-disable {
+  text-decoration: line-through;
+  color: gray;
+}

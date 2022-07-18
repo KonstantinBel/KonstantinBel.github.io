@@ -12,15 +12,13 @@
       <a class="logo" href="/index.html">
         <img src="/logo.svg" alt="">
       </a>
-      <a class="cart-icon" href="/checkout.html">
-        <img src="/cart.png" alt="">
-      </a>
     </div>
   </header>
   <main>
     <div class="pay-title">Payment Details</div>
     <div class="hpp"></div>
     <footer>
+      <div class="account-info">BB1 Demo Account - 64903 - e1580c17-76ce-1b12-e055-00d21d3819da</div>
       <img src="/footer.png" alt="">
     </footer>
   </main>
@@ -35,16 +33,20 @@
       HostedPayments.renderPaymentForm(
         {
           targetSelector: '.hpp',
-          amount: 3700,
+          amount: 3750,
           maxAmount: 10000,
           environmentId: '481337c5-9a6a-457d-b6a5-7ac94517c4e5',
-          billingProfileId: 'e3315dff-50ba-609a-e053-7b01000abc6a',
+          billingProfileId: 'e1580c17-76ce-1b12-e055-00d21d3819da',
           maxContainerWidth: '630px',
           containerWidth: '630px',
           customCssVariables: {
-            '--pui-button-enabled': 'black',
-            '--pui-button-enabled-hover': 'black',
-            '--pui-button-enabled-active': 'black',
+            '--pui-button-enabled': '#00756a',
+            '--pui-button-enabled-hover': '#00756a',
+            '--pui-button-enabled-active': '#00756a',
+            '--pui-initial-loader-spinner-color': '#00756a',
+            '--pui-checkbox-background-color': '#00756a',
+            '--pui-selected-input-border': '#00756a',
+            '--pui-selected-item-border': '#00756a',
           },
           hideTitle: true,
         },

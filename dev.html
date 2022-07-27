@@ -20,6 +20,16 @@
       height: 30px;
       background: aquamarine;
       margin-bottom: 50px;
+      cursor: pointer;
+    }
+    .checkbox {
+      width: auto;
+    }
+    .radio {
+      display: flex;
+    }
+    .radio input {
+      width: auto;
     }
   </style>
 </head>
@@ -47,12 +57,37 @@
 
     <label>
       <div class="title">Credit Card gateway</div>
-      <input type="text" id="cc_gw" value="Adyen_CC">
+      <div class="radio">
+        <label>
+          Adyen_CC
+          <input name="cc_gw" class="cc_gw" type="radio" value="Adyen_CC" checked>
+        </label>
+        <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+        <label>
+          StaxPayments_CC
+          <input name="cc_gw" class="cc_gw" type="radio" value="StaxPayments_CC">
+        </label>
+      </div>
+    </label>
+  
+    <label>
+      <div class="title">Direct debit gateway</div>
+      <div class="radio">
+        <label>
+          Adyen_DD
+          <input name="dd_gw" class="dd_gw" type="radio" value="Adyen_DD" checked>
+        </label>
+        <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+        <label>
+          StaxPayments_DD
+          <input name="dd_gw" class="dd_gw" type="radio" value="StaxPayments_DD">
+        </label>
+      </div>
     </label>
 
     <label>
-      <div class="title">Direct Debit gateway</div>
-      <input type="text" id="dd_gw" value="Adyen_DD">
+      <div class="title">Wallet mode</div>
+      <input class="checkbox" type="checkbox" id="wallet">
     </label>
 
     <button id="render">
@@ -79,9 +114,10 @@
             billingProfileId: document.querySelector('#user').value,
             maxContainerWidth: '630px',
             containerWidth: '630px',
-            paymentGateways: [document.querySelector('#cc_gw').value, document.querySelector('#dd_gw').value],
+            paymentGateways: [document.querySelector('.cc_gw:checked').value, document.querySelector('.dd_gw:checked').value],
             apiUrl: document.querySelector('#api_url').value,
             allowEditPrice: true,
+            walletMode: document.querySelector('#wallet').checked,
           },
         )
       };

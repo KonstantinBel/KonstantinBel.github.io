@@ -129,7 +129,10 @@
             billingProfileId: document.querySelector('#user').value,
             maxContainerWidth: '630px',
             containerWidth: '630px',
-            paymentGateways: [document.querySelector('.cc_gw:checked').value, document.querySelector('.dd_gw:checked').value],
+            paymentGateways: {
+              creditCard: { gateway: document.querySelector('.cc_gw:checked').value },
+              directDebit: { gateway: document.querySelector('.dd_gw:checked').value },
+            },
             apiUrl: document.querySelector('#api_url').value,
             allowEditPrice: true,
             walletMode: document.querySelector('#wallet').checked,

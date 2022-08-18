@@ -20,7 +20,7 @@
 }
 
 .tile.main {
-  background: #e1f8e0;
+  background: #d7f5ff;
 }
 
 .styles_plan-price-wrapper__JyYqX {
@@ -53,8 +53,8 @@
 .buy-button {
   display: block;
   text-decoration: none;
-  border: 2px solid #00756a;
-  background: #00756a;
+  border: 2px solid #0b8dcf;
+  background: #0b8dcf;
   color: #fff;
   margin: 15px 30px 0;
   border-radius: 10px;
@@ -65,9 +65,9 @@
 }
 
 .buy-button.free {
-  border: 2px solid #00756a;
+  border: 2px solid #0b8dcf;
   background: #fff;
-  color: #00756a;
+  color: #0b8dcf;
 }
 
 .styles_margin-t-xs__734o6 {

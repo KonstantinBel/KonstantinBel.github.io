@@ -26,7 +26,7 @@
   <script>
     const script = document.createElement('script');
 
-    script.src = `https://cdn.aws.billingplatform.com/hosted-payments-ui@${location.search.split('=')[1] || '1.7.5'}/lib.js`;
+    script.src = `https://cdn.aws.billingplatform.com/hosted-payments-ui@${location.search.split('=')[1] || '1.8.0'}/lib.js`;
     document.body.append(script);
 
     script.onload = function () {
@@ -35,11 +35,11 @@
           targetSelector: '.hpp',
           amount: 3750,
           maxAmount: 10000,
-          environmentId: '481337c5-9a6a-457d-b6a5-7ac94517c4e5',
-          billingProfileId: 'e3547b6a-a1bc-133d-e055-00d21d3819da',
+          environmentId: '379d372b-8406-4599-8f74-bc283342c5a5',
+          billingProfileId: 'e528c82a-1774-4e0e-b679-3a3fe219009f',
           maxContainerWidth: '630px',
           containerWidth: '630px',
-          paymentGateways: ['Adyen_CC', 'Adyen_DD'],
+          paymentGateways: { creditCard: { gateway: 'StaxPayments_CC' }, creditCard: { gateway: 'StaxPayments_DD' } },
           customCssVariables: {
             '--pui-button-enabled': '#00756a',
             '--pui-button-enabled-hover': '#00756a',
@@ -50,7 +50,7 @@
             '--pui-selected-item-border': '#00756a',
           },
           hideTitle: true,
-          apiUrl: 'https://sandbox.billingplatform.com/pdm_dev/hostedPayments/1.0',
+          apiUrl: 'https://my.billingplatform.com/standard_demo/hostedPayments/1.0',
         },
         {
           successCapture: () => { window.location = 'https://konstantinbel.github.io/success.html'; }

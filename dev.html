@@ -31,28 +31,31 @@
     .radio input {
       width: auto;
     }
+    .select-org-container button.active {
+      background: greenyellow;
+    }
   </style>
 </head>
 <body>
   <div class="form">
     <label>
-      <div class="title">HPP version</div>
+      <div class="title">HPP UI version</div>
       <input type="text" id="version" value="1">
     </label>
 
     <label>
       <div class="title">API URL</div>
-      <input type="text" id="api_url" value="https://dev.billingplatform.com/r2022_08dev/hostedPayments/1.0">
+      <input type="text" id="api_url" value="">
     </label>
 
     <label>
-      <div class="title">environmentId (r2022_08dev)</div>
-      <input type="text" id="env_id" value="73eb7c98-d2b0-41c7-9474-1c5bc664b0d0">
+      <div class="title">environmentId</div>
+      <input type="text" id="org_id" value="">
     </label>
 
     <label>
-      <div class="title">billingProfileId (hpp_site_user)</div>
-      <input type="text" id="user" value="6aaade80-c56d-404d-8050-45e642ac17be">
+      <div class="title">billingProfileId</div>
+      <input type="text" id="user" value="">
     </label>
 
     <label>
@@ -100,20 +103,52 @@
       <input class="checkbox" type="checkbox" id="wallet">
     </label>
 
-    <details>
-      <summary>Orgs:</summary>
-      <p>r2022_08dev - 73eb7c98-d2b0-41c7-9474-1c5bc664b0d0</p>
-      <p>r2022_08uat - 2f818d2c-72ae-4b3d-9936-f06be34d2b4d</p>
-      <p>r2022_09dev - c7ff5e0d-f1cd-4f45-af83-9888ed1402b6</p>
-      <p>r2022_09uat - b32cdd8a-d891-4434-a3e5-f76ffeffdc55</p>
-    </details>
-    
-    <details>
-      <summary>Users (hpp_site_user):</summary>
-      <p>r2022_08dev - 6aaade80-c56d-404d-8050-45e642ac17be</p>
-      <p>r2022_08uat - a66966ac-1a42-4275-a901-a696cbb98db7</p>
-      <p>r2022_09dev - e673eafb-4b12-4fc6-e053-7b01000a1ee8</p>
-    </details>
+    <label class="js-select-org select-org-container">
+      <div class="title">Use org data</div>
+      <button
+        data-url="https://dev.billingplatform.com/r2022_08dev/hostedPayments/1.0"
+        data-org="73eb7c98-d2b0-41c7-9474-1c5bc664b0d0"
+        data-user="6aaade80-c56d-404d-8050-45e642ac17be"
+      >r2022_08dev</button>
+      <button
+        data-url="https://dev.billingplatform.com/r2022_08uat/hostedPayments/1.0"
+        data-org="2f818d2c-72ae-4b3d-9936-f06be34d2b4d"
+        data-user="a66966ac-1a42-4275-a901-a696cbb98db7"
+      >r2022_08uat</button>
+      <button
+        data-url="https://dev.billingplatform.com/r2022_09dev/hostedPayments/1.0"
+        data-org="c7ff5e0d-f1cd-4f45-af83-9888ed1402b6"
+        data-user="e673eafb-4b12-4fc6-e053-7b01000a1ee8"
+      >r2022_09dev</button>
+      <button
+        data-url="https://dev.billingplatform.com/r2022_09uat/hostedPayments/1.0"
+        data-org="b32cdd8a-d891-4434-a3e5-f76ffeffdc55"
+        data-user="-"
+      >r2022_09uat</button>
+      <button
+        data-url="https://my.billingplatform.com/standard_demo/hostedPayments/1.0"
+        data-org="379d372b-8406-4599-8f74-bc283342c5a5"
+        data-user="e7637742-9d93-5def-e055-00287ecf1126"
+      >standard_demo</button>
+    </label>
+
+    <script>
+      const orgButtonsContainer = document.querySelector('.js-select-org');
+      orgButtonsContainer.addEventListener('click', event => {
+        const target = event.target.closest('button');
+
+        if (!target) { return; }
+
+        document.querySelector('#api_url').value = target.dataset.url;
+        document.querySelector('#org_id').value = target.dataset.org;
+        document.querySelector('#user').value = target.dataset.user;
+
+        orgButtonsContainer.querySelectorAll('button').forEach(button => {
+          button.classList.toggle('active', button === target);
+        });
+      });
+    </script>
+
     <br>
 
     <button id="render">
@@ -136,7 +171,7 @@
           {
             targetSelector: '.hpp',
             amount: 3750,
-            environmentId: document.querySelector('#env_id').value,
+            environmentId: document.querySelector('#org_id').value,
             billingProfileId: document.querySelector('#user').value,
             maxContainerWidth: '630px',
             containerWidth: '630px',

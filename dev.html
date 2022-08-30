@@ -59,6 +59,11 @@
     </label>
 
     <label>
+      <div class="title">currency code</div>
+      <input type="text" id="currency" value="USD">
+    </label>
+
+    <label>
       <div class="title">Credit Card gateway</div>
       <div class="radio">
         <label>
@@ -175,6 +180,7 @@
             billingProfileId: document.querySelector('#user').value,
             maxContainerWidth: '630px',
             containerWidth: '630px',
+            currencyCode: document.querySelector('#currency').value,
             paymentGateways: {
               creditCard: { gateway: document.querySelector('.cc_gw:checked').value },
               directDebit: { gateway: document.querySelector('.dd_gw:checked').value },

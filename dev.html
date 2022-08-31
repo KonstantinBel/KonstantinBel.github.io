@@ -64,6 +64,11 @@
     </label>
 
     <label>
+      <div class="title">language code</div>
+      <input type="text" id="language" value="EN">
+    </label>
+
+    <label>
       <div class="title">Credit Card gateway</div>
       <div class="radio">
         <label>
@@ -188,6 +193,7 @@
             apiUrl: document.querySelector('#api_url').value,
             allowEditPrice: true,
             walletMode: document.querySelector('#wallet').checked,
+            languageCode: document.querySelector('#language').value,
           },
         )
       };

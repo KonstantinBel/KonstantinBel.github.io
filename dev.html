@@ -9,7 +9,10 @@
       display: flex;
       margin-bottom: 10px;
     }
-    input {
+    label.inline {
+      display: inline-block;
+    }
+    input[type=text] {
       width: 700px;
     }
     .title {
@@ -34,13 +37,29 @@
     .select-org-container button.active {
       background: greenyellow;
     }
+
+    #override_src:checked ~ label[data-type='version'] {
+      display: none;
+    }
+    #override_src:not(:checked) ~ label[data-type='iframe_src'] {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <div class="form">
-    <label>
+    <label for="override_src" class="inline">
+      Override iframe src url
+    </label>
+    <input id="override_src" type="checkbox">
+
+    <label data-type="version">
       <div class="title">HPP UI version</div>
       <input type="text" id="version" value="2.0.10">
+    </label>
+    <label data-type="iframe_src">
+      <div class="title">Iframe src url</div>
+      <input type="text" id="iframe_src" value="https://cdn.aws.billingplatform.com/hosted-payments-ui@2/lib.js">
     </label>
 
     <label>
@@ -183,13 +202,21 @@
   <div class="hpp"></div>
 
   <script>
+    let lastScriptNode;
+
     document.querySelector('#render').addEventListener('click', () => {
+      if (lastScriptNode) document.body.removeChild(lastScriptNode);
+
       document.querySelector('.hpp').innerHTML = '';
 
       const script = document.createElement('script');
 
-      script.src = `https://cdn.aws.billingplatform.com/hosted-payments-ui@${document.querySelector('#version').value}/lib.js`;
+      script.src = document.querySelector('#override_src').checked
+        ? document.querySelector('#iframe_src').value
+        : `https://cdn.aws.billingplatform.com/hosted-payments-ui@${document.querySelector('#version').value}/lib.js`;
       document.body.append(script);
+
+      lastScriptNode = script;
 
       script.onload = function () {
         HostedPayments.renderPaymentForm(

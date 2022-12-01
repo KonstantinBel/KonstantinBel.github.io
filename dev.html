@@ -9,7 +9,10 @@
       display: flex;
       margin-bottom: 10px;
     }
-    input {
+    label.inline {
+      display: inline-block;
+    }
+    input[type=text] {
       width: 700px;
     }
     .title {
@@ -34,13 +37,29 @@
     .select-org-container button.active {
       background: greenyellow;
     }
+
+    #override_src:checked ~ label[data-type='version'] {
+      display: none;
+    }
+    #override_src:not(:checked) ~ label[data-type='iframe_src'] {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <div class="form">
-    <label>
+    <label for="override_src" class="inline">
+      Override iframe src url
+    </label>
+    <input id="override_src" type="checkbox">
+
+    <label data-type="version">
       <div class="title">HPP UI version</div>
-      <input type="text" id="version" value="2.0.10">
+      <input type="text" id="version" value="2">
+    </label>
+    <label data-type="iframe_src">
+      <div class="title">Iframe src url</div>
+      <input type="text" id="iframe_src" value="https://cdn.aws.billingplatform.com/hosted-payments-ui@2/lib.js">
     </label>
 
     <label>
@@ -69,6 +88,36 @@
     </label>
 
     <label>
+      <div class="title">Full name</div>
+      <input type="text" id="fullName" value="">
+    </label>
+
+    <label>
+      <div class="title">State</div>
+      <input type="text" id="state" value="">
+    </label>
+
+    <label>
+      <div class="title">City</div>
+      <input type="text" id="city" value="">
+    </label>
+
+    <label>
+      <div class="title">Address</div>
+      <input type="text" id="address" value="">
+    </label>
+
+    <label>
+      <div class="title">Zip</div>
+      <input type="text" id="zip" value="">
+    </label>
+
+    <label>
+      <div class="title">Email</div>
+      <input type="text" id="email" value="">
+    </label>
+
+    <label>
       <div class="title">Credit Card gateway</div>
       <div class="radio">
         <label>
@@ -87,7 +136,7 @@
         </label>
       </div>
     </label>
-  
+
     <label>
       <div class="title">Direct debit gateway</div>
       <div class="radio">
@@ -141,6 +190,16 @@
         data-user="e94199cf-9fe6-1adc-e053-7b01000af6b8"
       >r2022_10dev</button>
       <button
+        data-url="https://dev.billingplatform.com/r2022_10uat/hostedPayments/1.0"
+        data-org="8a4ccab3-0f3a-4819-84a0-e3b0964b4484"
+        data-user="ead6bb94-7295-23fb-e053-7b01000af541"
+      >r2022_10uat</button>
+      <button
+        data-url="https://dev.billingplatform.com/r2022_11uat/hostedPayments/1.0"
+        data-org="d16c48e4-aebb-443a-ad68-5a843d45735d"
+        data-user="ead5b156-1f02-775b-e053-7b01000aec58"
+      >r2022_11uat</button>
+      <button
         data-url="https://my.billingplatform.com/standard_demo/hostedPayments/1.0"
         data-org="379d372b-8406-4599-8f74-bc283342c5a5"
         data-user="e7637742-9d93-5def-e055-00287ecf1126"
@@ -173,13 +232,21 @@
   <div class="hpp"></div>
 
   <script>
+    let lastScriptNode;
+
     document.querySelector('#render').addEventListener('click', () => {
+      if (lastScriptNode) document.body.removeChild(lastScriptNode);
+
       document.querySelector('.hpp').innerHTML = '';
 
       const script = document.createElement('script');
 
-      script.src = `https://cdn.aws.billingplatform.com/hosted-payments-ui@${document.querySelector('#version').value}/lib.js`;
+      script.src = document.querySelector('#override_src').checked
+        ? document.querySelector('#iframe_src').value
+        : `https://cdn.aws.billingplatform.com/hosted-payments-ui@${document.querySelector('#version').value}/lib.js`;
       document.body.append(script);
+
+      lastScriptNode = script;
 
       script.onload = function () {
         HostedPayments.renderPaymentForm(
@@ -199,6 +266,12 @@
             allowEditPrice: true,
             walletMode: document.querySelector('#wallet').checked,
             languageCode: document.querySelector('#language').value,
+            fullName: 'Test Test 222222',
+            state: document.querySelector('#state').value,
+            city: document.querySelector('#city').value,
+            address: document.querySelector('#address').value,
+            zip: document.querySelector('#zip').value,
+            email: document.querySelector('#email').value,
           },
         )
       };

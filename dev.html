@@ -88,6 +88,36 @@
     </label>
 
     <label>
+      <div class="title">Full name</div>
+      <input type="text" id="fullName" value="">
+    </label>
+
+    <label>
+      <div class="title">State</div>
+      <input type="text" id="state" value="">
+    </label>
+
+    <label>
+      <div class="title">City</div>
+      <input type="text" id="city" value="">
+    </label>
+
+    <label>
+      <div class="title">Address</div>
+      <input type="text" id="address" value="">
+    </label>
+
+    <label>
+      <div class="title">Zip</div>
+      <input type="text" id="zip" value="">
+    </label>
+
+    <label>
+      <div class="title">Email</div>
+      <input type="text" id="email" value="">
+    </label>
+
+    <label>
       <div class="title">Credit Card gateway</div>
       <div class="radio">
         <label>
@@ -106,7 +136,7 @@
         </label>
       </div>
     </label>
-  
+
     <label>
       <div class="title">Direct debit gateway</div>
       <div class="radio">
@@ -236,6 +266,12 @@
             allowEditPrice: true,
             walletMode: document.querySelector('#wallet').checked,
             languageCode: document.querySelector('#language').value,
+            fullName: 'Test Test 222222',
+            state: document.querySelector('#state').value,
+            city: document.querySelector('#city').value,
+            address: document.querySelector('#address').value,
+            zip: document.querySelector('#zip').value,
+            email: document.querySelector('#email').value,
           },
         )
       };
